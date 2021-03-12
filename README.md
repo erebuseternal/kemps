@@ -20,3 +20,5 @@ You'll need the following extension for all of this to work: Visual Studio Code 
 - Go into .devcontainer/devcontainer.json and update the `postCreateCommand` to reflect your git credentials
 - Rebuild the container using the *Remote-Containers: Rebuild Container* command from the Command Palette
 - Once you're ready to make a commit you should be able to push up and VSCode will prompt you to sign in
+
+Everything should now work! If you want to run a terminal session on your container you simply need to open up a terminal in VSCode. 
