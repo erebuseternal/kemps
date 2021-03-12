@@ -6,3 +6,5 @@ RUN apt-get -y update && \
 	apt-get install -y libpq-dev
 
 RUN apt-get -y install git
+
+RUN echo hello
