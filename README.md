@@ -13,7 +13,7 @@ You'll need the following extension for all of this to work: Visual Studio Code 
 ### Step 3: Clone Repo into Container
 - Run the *Remote Containers: Clone Repository in Container Volume* command from the Command Palette 
 - Enter the https link to this repository `https://github.com/erebuseternal/kemps` (you can also specify a branch)
-- Then when prompted select the option to build from the Dockerfile in the repository
+- If prompted select the option to build from the Dockerfile in the repository (the .devcontainer config should prevent this)
 - Let the container build!
 
 ### Step 4: Setting up Git
