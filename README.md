@@ -31,7 +31,7 @@ npx create-react-app app
 
 And to run it:
 ```bash
-cd my-app
+cd app
 npm start
 ```
 
