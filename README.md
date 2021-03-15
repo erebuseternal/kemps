@@ -41,4 +41,5 @@ npm start
 When you start up a new container the dependencies for the app will be missing. To fix this simply cd into `app` and run:
 ```bash
 npm update
+npm install react-bootstrap bootstrap
 ```
