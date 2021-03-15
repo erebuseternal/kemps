@@ -36,3 +36,9 @@ npm start
 ```
 
 [source](https://reactjs.org/docs/create-a-new-react-app.html)
+
+### Starting from a New Container
+When you start up a new container the dependencies for the app will be missing. To fix this simply cd into `app` and run:
+```bash
+npm update
+```
