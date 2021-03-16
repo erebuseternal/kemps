@@ -49,3 +49,6 @@ Then place a `.env` file in the `app` directory with the following:
 ```
 REACT_APP_GOOGLE_MAPS_API_KEY=<THE_API_KEY>
 ```
+
+## Bootstrap!
+We're using bootstrap for react (awesome stuff). Check out all the components you can add [here](https://react-bootstrap.github.io/components/alerts).
