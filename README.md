@@ -42,4 +42,10 @@ When you start up a new container the dependencies for the app will be missing. 
 ```bash
 npm update
 npm install react-bootstrap bootstrap
+npm install --force google-map-react
+```
+
+Then place a `.env` file in the `app` directory with the following:
+```
+REACT_APP_GOOGLE_MAPS_API_KEY=<THE_API_KEY>
 ```
