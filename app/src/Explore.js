@@ -21,16 +21,35 @@ export default function Explore() {
       }));
     };
 
+    const onGoogleApiLoaded = (map, maps) => {
+        var triangleCoords = [
+            { lat: 25.774, lng: -80.19 },
+            { lat: 18.466, lng: -66.118 },
+            { lat: 32.321, lng: -64.757 },
+            { lat: 25.774, lng: -80.19 }
+          ];
+        
+          // Construct the polygon.
+          var bermudaTriangle = new maps.Polygon({
+            paths: triangleCoords,
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35
+          });
+          bermudaTriangle.setMap(map);
+    };
+
     return (
         <>
             <div style={{ height:'90vh', width: '100%' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: REACT_APP_GOOGLE_MAPS_API_KEY }}
-                defaultCenter={{
-                lat: 37.0,
-                lng: -122.0
-                }}
-                zoom={10}
+                defaultCenter={{ lat: 24.886, lng: -70.268 }}
+                zoom={5}
+                yesIWantToUseGoogleMapApiInternals
+                onGoogleApiLoaded={({ map, maps }) => onGoogleApiLoaded(map, maps)}
             >
             </GoogleMapReact>
             </div>
