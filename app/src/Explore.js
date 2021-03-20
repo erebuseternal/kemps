@@ -1,16 +1,18 @@
-import GoogleMapReact from 'google-map-react';
+import GoogleApiWrapper from './Map';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
 
-export default function Explore() {
+
+  export default function Explore() {
     const [filters, setFilters] = useState({
         mammals: true,
         birds: false,
         amphibians: false
     });
+
+    const [toggle, setToggle] = useState(false)
 
     const toggleFilterActive = ({target}) => {
         const taxa = target.getAttribute('taxa');
@@ -21,43 +23,28 @@ export default function Explore() {
       }));
     };
 
-    const onGoogleApiLoaded = (map, maps) => {
-        var triangleCoords = [
-            { lat: 25.774, lng: -80.19 },
-            { lat: 18.466, lng: -66.118 },
-            { lat: 32.321, lng: -64.757 },
-            { lat: 25.774, lng: -80.19 }
-          ];
-        
-          // Construct the polygon.
-          var bermudaTriangle = new maps.Polygon({
-            paths: triangleCoords,
-            strokeColor: "#FF0000",
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: "#FF0000",
-            fillOpacity: 0.35
-          });
-          bermudaTriangle.setMap(map);
-    };
+    const toggleFunc = () => {
+        console.log(toggle);
+        setToggle((prevToggle) => (!prevToggle));
+    }
 
     return (
         <>
-            <div style={{ height:'90vh', width: '100%' }}>
-            <GoogleMapReact
-                bootstrapURLKeys={{ key: REACT_APP_GOOGLE_MAPS_API_KEY }}
-                defaultCenter={{ lat: 24.886, lng: -70.268 }}
-                zoom={5}
-                yesIWantToUseGoogleMapApiInternals
-                onGoogleApiLoaded={({ map, maps }) => onGoogleApiLoaded(map, maps)}
-            >
-            </GoogleMapReact>
+            <div>
+            <GoogleApiWrapper polygons={[[
+                    {lat: 37, lng:-122},
+                    {lat: 36.7, lng:-122.5},
+                    {lat: 36.7, lng:-121.5},
+                    {lat: 37, lng:-122}
+                ]]}  polygonFunc={toggleFunc}/>
             </div>
             <ButtonGroup toggle>
                 <Button variant={filters['mammals'] ? 'primary' : 'outline-primary'} taxa={'mammals'} onClick={toggleFilterActive}>Mammals</Button>
                 <Button variant={filters['birds'] ? 'primary' : 'outline-primary'} taxa={'birds'} onClick={toggleFilterActive}>Birds</Button>
                 <Button variant={filters['amphibians'] ? 'primary' : 'outline-primary'} taxa={'amphibians'} onClick={toggleFilterActive}>Amphibians</Button>
+                <Button variant={toggle ? 'primary' : 'outline-primary'}>HELLO</Button>
             </ButtonGroup>
+            
         </>
     );
 }
