@@ -42,7 +42,7 @@ When you start up a new container the dependencies for the app will be missing. 
 ```bash
 npm update
 npm install react-bootstrap bootstrap
-npm install --force google-map-react
+npm install --save --force google-maps-react
 ```
 
 Then place a `.env` file in the `app` directory with the following:
