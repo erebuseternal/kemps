@@ -16,7 +16,24 @@ export const fake_shapes = [
         ],
         "child_regions": [
             1, 2
-        ]
+        ],
+        "info": {
+            "title": "A Cool Place",
+            "sections": [
+                {
+                    "title": "Species",
+                    "headers": [
+                        "Name"
+                    ],
+                    "rows": [
+                        {
+                            "image": "./fish.png",
+                            "cols": ["a fish"]
+                        }
+                    ]
+                }
+            ]
+        }
     },
     {
         "id": 1,

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Polygon } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Polygon, InfoWindow, Marker } from 'google-maps-react';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
 
