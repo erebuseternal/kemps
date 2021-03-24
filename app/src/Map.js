@@ -30,6 +30,14 @@ class MapContainer extends Component {
                 path={this.props.polygons[0]}
                 onClick={this.props.polygonFunc}
             ></Polygon>
+            <Polygon
+                path={this.props.polygons[1]}
+                onClick={this.props.polygonFunc}
+            ></Polygon>
+            <Polygon
+                path={this.props.polygons[2]}
+                onClick={this.props.polygonFunc}
+            ></Polygon>
             </Map>
       );
     }
