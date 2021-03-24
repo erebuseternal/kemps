@@ -26,18 +26,18 @@ class MapContainer extends Component {
             }
           }
         >
-            <Polygon
-                path={this.props.polygons[0]}
-                onClick={this.props.polygonFunc}
-            ></Polygon>
-            <Polygon
-                path={this.props.polygons[1]}
-                onClick={this.props.polygonFunc}
-            ></Polygon>
-            <Polygon
-                path={this.props.polygons[2]}
-                onClick={this.props.polygonFunc}
-            ></Polygon>
+            {
+              this.props.polygons.map(
+                polygon => <Polygon
+                  path={polygon["polygon"]}
+                  onClick={this.props.polygonFunc}
+                  polygon_id={polygon["id"]}
+                  polygon_parent={polygon["parent_region"]}
+                  polygon_children={("child_regions" in polygon) ? polygon["child_regions"] : []}
+                  key={polygon["id"]}
+                ></Polygon>
+              )
+            }
             </Map>
       );
     }
