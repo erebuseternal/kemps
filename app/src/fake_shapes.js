@@ -27,7 +27,7 @@ export const fake_shapes = [
                     ],
                     "rows": [
                         {
-                            "image": "./fish.png",
+                            "image": "https://raw.githubusercontent.com/erebuseternal/kemps/main/app/src/fish.jpg",
                             "cols": ["a fish"]
                         }
                     ]

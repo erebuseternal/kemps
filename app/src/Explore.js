@@ -76,7 +76,7 @@ import { fake_shapes } from './fake_shapes';
                                                    section["rows"].map(
                                                        row => (
                                                             <>
-                                                                <td><Image src={row["image"]} roundedCircle/></td>
+                                                                <td><img src={row["image"]} style={{ height: "50px", width: "auto" }}/></td>
                                                                 {row["cols"].map(col => <td>{col}</td>)}
                                                             </>
                                                        )
