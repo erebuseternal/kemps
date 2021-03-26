@@ -4,9 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
-import Card from 'react-bootstrap/Card';
-import Table from 'react-bootstrap/Table';
+import InfoCard from './InfoCard';
 import Navbar from 'react-bootstrap/Navbar';
 import { useState } from 'react';
 import { fake_shapes } from './fake_shapes';
@@ -21,6 +19,8 @@ import { fake_shapes } from './fake_shapes';
     });
 
     const [activePolygons, setActivePolygons] = useState([0]);
+
+    const [selectedPolygon, setSelectedPolygon] = useState(-1);
 
     const toggleFilterActive = ({target}) => {
         const taxa = target.getAttribute('taxa');
@@ -43,6 +43,10 @@ import { fake_shapes } from './fake_shapes';
         );
     }
 
+    const onPolygonClick = (e) => {
+        setSelectedPolygon(e["polygon_id"])
+    }
+
     return (
         <>  
             <div>
@@ -52,48 +56,9 @@ import { fake_shapes } from './fake_shapes';
                     <Button variant={filters['amphibians'] ? 'primary' : 'outline-primary'} taxa={'amphibians'} onClick={toggleFilterActive}>Amphibians</Button>
                 </ButtonGroup>
             </div>
-            <GoogleApiWrapper polygons={fake_shapes.filter(polygon => activePolygons.includes(polygon["id"]))}  polygonFunc={toggleFunc}/>
+            <GoogleApiWrapper polygons={fake_shapes.filter(polygon => activePolygons.includes(polygon["id"]))}  onPolygonClick={onPolygonClick}/>
             <Navbar fixed="bottom">
-                <Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                        <Card.Title>{fake_shapes[0]["info"]["title"]}</Card.Title>
-                        {
-                            fake_shapes[0]["info"]["sections"].map(
-                                section => (
-                                    <>
-                                        <Card.Subtitle>{section["title"]}</Card.Subtitle>
-                                        <Table>
-                                            <thead>
-                                                <th></th>
-                                                {section["headers"].map(
-                                                    header => (
-                                                        <th>{header}</th>
-                                                    )
-                                                )}
-                                            </thead>
-                                            <tbody>
-                                               {
-                                                   section["rows"].map(
-                                                       row => (
-                                                            <>
-                                                                <td><img src={row["image"]} style={{ height: "50px", width: "auto" }}/></td>
-                                                                {row["cols"].map(col => <td>{col}</td>)}
-                                                            </>
-                                                       )
-                                                   )
-                                               } 
-                                            </tbody>
-                                        </Table>
-                                    </>
-                                )
-                            )
-                        }
-                        <ButtonGroup toggle>
-                            <Button>Parent Region</Button>
-                            <Button>Sub Regions</Button>
-                        </ButtonGroup>
-                    </Card.Body>
-                </Card>
+                {selectedPolygon !== -1 && <InfoCard info={fake_shapes[selectedPolygon]["info"]} />}
             </Navbar>
         </>
     );

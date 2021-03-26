@@ -32,7 +32,7 @@ class MapContainer extends Component {
               this.props.polygons.map(
                 polygon => <Polygon
                   path={polygon["polygon"]}
-                  onClick={this.props.polygonFunc}
+                  onClick={this.props.onPolygonClick}
                   polygon_id={polygon["id"]}
                   polygon_parent={polygon["parent_region"]}
                   polygon_children={("child_regions" in polygon) ? polygon["child_regions"] : []}
