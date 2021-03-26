@@ -25,6 +25,7 @@ class MapContainer extends Component {
               lng: -122
             }
           }
+          onDragend={this.props.onDragend}
         >
             {
               this.props.polygons.map(

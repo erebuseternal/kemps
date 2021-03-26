@@ -31,21 +31,23 @@ const InfoSection = (props) => {
             <Card.Subtitle>{props.section["title"]}</Card.Subtitle>
             <Table>
                 <thead>
-                    <th></th>
-                    {props.section["headers"].map(
-                        header => (
-                            <th>{header}</th>
-                        )
-                    )}
+                    <tr>
+                        <th></th>
+                        {props.section["headers"].map(
+                            header => (
+                                <th>{header}</th>
+                            )
+                        )}
+                    </tr>
                 </thead>
                 <tbody>
                     {
                         props.section["rows"].map(
                             row => (
-                                <>
+                                <tr>
                                     <td><img src={row["image"]} style={{ height: "50px", width: "auto" }}/></td>
                                     {row["cols"].map(col => <td>{col}</td>)}
-                                </>
+                                </tr>
                             )
                         )
                     } 
