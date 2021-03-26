@@ -16,8 +16,9 @@ export default function InfoCard(props) {
                     )
                 }
                 <ButtonGroup toggle>
-                    <Button>Parent Region</Button>
-                    <Button>Sub Regions</Button>
+                    <Button disabled={props.parent_id === -1} onClick={() => props.goUp(props.parent_id)}>Parent Region</Button>
+                    <Button disabled={props.child_ids.length === 0} onClick={() => props.goDown(props.child_ids, props.polygon_id)}>Sub Regions</Button>
+                    <Button variant="outline-primary" onClick={props.closeInfoWindow}>X</Button>
                 </ButtonGroup>
             </Card.Body>
         </Card>

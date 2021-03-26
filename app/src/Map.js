@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Polygon, InfoWindow, Marker } from 'google-maps-react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import { Map, GoogleApiWrapper, Polygon } from 'google-maps-react';
 
 const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
 
 const mapStyles = {
     width: '100%',
-    height: '100%'
+    height: '85%'
   };
   
 class MapContainer extends Component {

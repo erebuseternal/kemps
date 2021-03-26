@@ -1,9 +1,6 @@
 import GoogleApiWrapper from './Map';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import InfoCard from './InfoCard';
 import Navbar from 'react-bootstrap/Navbar';
 import { useState } from 'react';
@@ -31,20 +28,34 @@ import { fake_shapes } from './fake_shapes';
       }));
     };
 
-    const toggleFunc = (e) => {
-        const polygon_id = e["polygon_id"];
-        const polygon_children = e["polygon_children"];
+    const goUp = (parent) => {
+        setActivePolygons(
+            (prev) => {
+                return prev.filter(
+                    id => !(fake_shapes[parent]["child_regions"].includes(id))
+                ).concat([parent])
+            }
+        );
+        setSelectedPolygon(-1);
+    }
+
+    const goDown = (child_ids, polygon_id) => {
         setActivePolygons(
             (prev) => (
                 prev.filter(
                     id => id !== polygon_id
-                ).concat(polygon_children)
+                ).concat(child_ids)
             )
         );
+        setSelectedPolygon(-1);
     }
 
     const onPolygonClick = (e) => {
         setSelectedPolygon(e["polygon_id"])
+    }
+
+    const closeInfoWindow = () => {
+        setSelectedPolygon(-1);
     }
 
     return (
@@ -58,7 +69,17 @@ import { fake_shapes } from './fake_shapes';
             </div>
             <GoogleApiWrapper polygons={fake_shapes.filter(polygon => activePolygons.includes(polygon["id"]))}  onPolygonClick={onPolygonClick}/>
             <Navbar fixed="bottom">
-                {selectedPolygon !== -1 && <InfoCard info={fake_shapes[selectedPolygon]["info"]} />}
+                {selectedPolygon !== -1 && 
+                 <InfoCard 
+                    info={fake_shapes[selectedPolygon]["info"]}
+                    polygon_id={selectedPolygon}
+                    parent_id={"parent_region" in fake_shapes[selectedPolygon] ? fake_shapes[selectedPolygon]["parent_region"] : -1}
+                    child_ids={"child_regions" in fake_shapes[selectedPolygon] ? fake_shapes[selectedPolygon]["child_regions"] : []}
+                    goUp={goUp}
+                    goDown={goDown}
+                    closeInfoWindow={closeInfoWindow}
+                 />
+                }
             </Navbar>
         </>
     );

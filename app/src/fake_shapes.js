@@ -47,7 +47,24 @@ export const fake_shapes = [
             {"lat": 37.20043847456525, "lng": -122.276152633345},
             {"lat": 37.11935927809594, "lng": -122.2789427953656}
         ],
-        "parent_region": 0
+        "parent_region": 0,
+        "info": {
+            "title": "The Big Place",
+            "sections": [
+                {
+                    "title": "Species",
+                    "headers": [
+                        "Name"
+                    ],
+                    "rows": [
+                        {
+                            "image": "https://raw.githubusercontent.com/erebuseternal/kemps/main/app/src/fish.jpg",
+                            "cols": ["a fish again..."]
+                        }
+                    ]
+                }
+            ]
+        }
     },
     {
         "id": 2,
@@ -59,6 +76,23 @@ export const fake_shapes = [
             {"lat": 37.19930700550839, "lng": -122.0697870766496},
             {"lat": 36.99305478560586, "lng": -122.0245649876627}
         ],
-        "parent_region": 0
+        "parent_region": 0,
+        "info": {
+            "title": "The Little Place",
+            "sections": [
+                {
+                    "title": "Species",
+                    "headers": [
+                        "Name"
+                    ],
+                    "rows": [
+                        {
+                            "image": "https://raw.githubusercontent.com/erebuseternal/kemps/main/app/src/fish.jpg",
+                            "cols": ["yet another fish..."]
+                        }
+                    ]
+                }
+            ]
+        }
     }
 ];
